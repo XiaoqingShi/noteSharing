@@ -20,7 +20,8 @@ import com.notesharing.superAction.SuperAction;
 @Namespace("/") // 使用convention-plugin插件提供的@Namespace注解为这个Action指定一个命名空间
 @Results({ @Result(name = "success", type = "json", params = { "root", "dataMap" }),
 		@Result(name = "success_comment", type = "json", params = { "root", "dataMapAndComment" }),
-		@Result(name = "successFind", type = "json", params = { "root", "dataMapAndFind" }) })
+		@Result(name = "successFind", type = "json", params = { "root", "dataMapAndFind" }),
+		@Result(name = "successUserData", type = "json", params = { "root", "dataMapAndUserData" }), })
 public class MainAction extends SuperAction {
 
 	@Autowired
@@ -61,6 +62,8 @@ public class MainAction extends SuperAction {
 		return "successFind";
 	}
 
+	private String userName;
+
 	/**
 	 * 返回用户自己所拥有的数据
 	 * 
@@ -69,11 +72,11 @@ public class MainAction extends SuperAction {
 	public String showUserData() {
 		dataMapAndUserData = new HashMap<String, Object>();
 		dataMapAndUserData.clear();
-		List<Photos> photosList = userService.getPhotosFindAndComment(tagName);
+		List<Photos> photosList = userService.getPhotosUserName(userName);
 		System.out.println("lslsls");
 		main_info = "显示数据";
-		dataMapAndFind.put("main_info", main_info);
-		dataMapAndFind.put("Photos", photosList);
+		dataMapAndUserData.put("main_info", main_info);
+		dataMapAndUserData.put("Photos", photosList);
 		return "successUserData";
 	}
 
@@ -92,6 +95,22 @@ public class MainAction extends SuperAction {
 		dataMapAndComment.put("Photos", aList);
 
 		return "success_comment";
+	}
+
+	public Map<String, Object> getDataMapAndUserData() {
+		return dataMapAndUserData;
+	}
+
+	public void setDataMapAndUserData(Map<String, Object> dataMapAndUserData) {
+		this.dataMapAndUserData = dataMapAndUserData;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public Map<String, Object> getDataMapAndFind() {
