@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>  
+<!DOCTYPE hibernate-configuration PUBLIC  
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"  
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/notesharing</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+        <property name="connection.characterEncoding">utf-8</property>
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- 将Session扔到线程里去处理，Enable Hibernate's automatic session context 
+            management -->
+        <property name="current_session_context_class">thread</property>
+        <!-- 在控制台打印SQL语句 -->
+        <property name="show_sql">true</property>
+        <!-- 自动把实体类与属性映射成数据库中的表与列 -->
+        <property name="hbm2ddl.auto">update</property>
+        <!-- <mapping resource="cn/com/entity/User.hbm.xml"/> -->
+        <!-- 在Hibernate中注册User实体类,区别于上面注释掉的resource写法 -->
+        <mapping class="com.notesharing.model.User" />
+    </session-factory>
+</hibernate-configuration>
