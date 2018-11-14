@@ -74,6 +74,11 @@ public interface UserServiceI {
 	List getPhotosFindAndComment(String tagName);
 
 	/**
+	 * 返回图片集
+	 */
+	List getPhotosUserName(String userName);
+
+	/**
 	 * 保存单个图片的数据
 	 */
 	Serializable saveComment(PhotosComment pComment);

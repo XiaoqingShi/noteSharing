@@ -150,4 +150,29 @@ public class UserServiceImpl implements UserServiceI {
 		return photosCommentDao.saveComment(pComment);
 	}
 
+	@Override
+	public List getPhotosUserName(String userName) {
+		List<Photos> photos = photosDao.getUserPhotos(userName);
+		List pList = new ArrayList<>();
+		if (photos == null || photos.size() == 0)
+			return null;
+		for (int i = 0; i < photos.size(); i++) {
+			Map<String, Object> pL = new HashMap<String, Object>();
+
+			System.out.println("好事" + pL.size());
+			List<PhotosComment> photosComments = photosCommentDao.getPhotosComment(photos.get(i).getPhotosid());
+			pL.put("Photo", photos.get(i));
+			System.out.println("对象 " + pL.get("Photo").toString());
+			if (photosComments == null || photosComments.size() <= 0) {
+				pL.put("Comment", null);
+				pL.put("Comment_size", 0);
+			} else {
+				pL.put("Comment", photosComments);
+				pL.put("Comment_size", photosComments.size());
+			}
+			pList.add(pL);
+		}
+		return pList;
+	}
+
 }

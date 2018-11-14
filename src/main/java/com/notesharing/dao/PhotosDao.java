@@ -23,4 +23,9 @@ public interface PhotosDao {
 	 * 返回搜索图片集
 	 */
 	List<Photos> getPhotos(String tagName);
+
+	/**
+	 * 返回用户自己的图片集
+	 */
+	List<Photos> getUserPhotos(String userName);
 }

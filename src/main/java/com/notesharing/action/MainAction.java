@@ -32,6 +32,7 @@ public class MainAction extends SuperAction {
 	private String main_infoAndComment;
 	private String tagName;
 	private Map<String, Object> dataMapAndFind;
+	private Map<String, Object> dataMapAndUserData;// 用户自己所拥有的数据
 
 	public String showData() {
 		dataMap = new HashMap<String, Object>();
@@ -60,6 +61,27 @@ public class MainAction extends SuperAction {
 		return "successFind";
 	}
 
+	/**
+	 * 返回用户自己所拥有的数据
+	 * 
+	 * @return
+	 */
+	public String showUserData() {
+		dataMapAndUserData = new HashMap<String, Object>();
+		dataMapAndUserData.clear();
+		List<Photos> photosList = userService.getPhotosFindAndComment(tagName);
+		System.out.println("lslsls");
+		main_info = "显示数据";
+		dataMapAndFind.put("main_info", main_info);
+		dataMapAndFind.put("Photos", photosList);
+		return "successUserData";
+	}
+
+	/**
+	 * 返回数据和评论
+	 * 
+	 * @return
+	 */
 	public String showDataAndComment() {
 		dataMapAndComment = new HashMap<String, Object>();
 		dataMapAndComment.clear();

@@ -67,4 +67,15 @@ public class PhotosDaoImpl implements PhotosDao {
 		return photosList;
 	}
 
+	@Override
+	public List<Photos> getUserPhotos(String userName) {
+		List<Photos> photosList = new ArrayList<Photos>();
+		String hql = "from Photos where author = ?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter(0, userName);
+		System.out.println("算了算了算了" + userName);
+		photosList = query.list();
+		return photosList;
+	}
+
 }
