@@ -26,7 +26,7 @@ public class MainAction extends SuperAction {
 	@Autowired
 	private UserServiceI userService;
 	private Map<String, Object> dataMap;
-	private String main_info;// 信息
+	private String main_info;
 
 	private Map<String, Object> dataMapAndComment;
 	private String main_infoAndComment;
