@@ -18,4 +18,9 @@ public interface PhotosCommentDao {
 	 * 得到用户
 	 */
 	List<PhotosComment> getPhotosComment(int phontsId);
+
+	/**
+	 * 删除评论
+	 */
+	int deletePhotosComment(Integer photosid);
 }

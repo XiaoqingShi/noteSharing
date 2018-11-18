@@ -43,4 +43,16 @@ public class PhotosCommentDaoImpl implements PhotosCommentDao {
 		return usersList;
 	}
 
+	@Override
+	public int deletePhotosComment(Integer photosid) {
+		PhotosComment photo = new PhotosComment();
+		photo.setPhotosid(photosid);
+		try {
+			sessionFactory.getCurrentSession().delete(photo);
+			return 1;
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
 }

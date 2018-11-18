@@ -28,4 +28,16 @@ public class PhotoDaoImpl implements PhotoDao {
 		return sessionFactory.getCurrentSession().save(photo);
 	}
 
+	@Override
+	public int deletePhoto(Integer photosid) {
+		Photo photo = new Photo();
+		photo.setPhotosid(photosid);
+		try {
+			sessionFactory.getCurrentSession().delete(photo);
+			return 1;
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
 }

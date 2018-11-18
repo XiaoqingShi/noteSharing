@@ -178,7 +178,15 @@ public class UserServiceImpl implements UserServiceI {
 	@Override
 	public int deletePhotos(Integer photosid) {
 		// TODO Auto-generated method stub
-		return photosDao.deletePhotos(photosid);
+		try {
+			photoDao.deletePhoto(photosid);
+			photosCommentDao.deletePhotosComment(photosid);
+			photosDao.deletePhotos(photosid);
+			return 1;
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw e;
+		}
 	}
 
 }

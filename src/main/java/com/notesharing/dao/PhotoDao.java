@@ -12,4 +12,9 @@ public interface PhotoDao {
 	 * @return
 	 */
 	Serializable save(Photo photo);
+
+	/**
+	 * 删除图片
+	 */
+	int deletePhoto(Integer photosid);
 }
