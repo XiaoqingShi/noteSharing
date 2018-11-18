@@ -28,4 +28,9 @@ public interface PhotosDao {
 	 * 返回用户自己的图片集
 	 */
 	List<Photos> getUserPhotos(String userName);
+
+	/**
+	 * 删除图集
+	 */
+	int deletePhotos(Integer photosid);
 }

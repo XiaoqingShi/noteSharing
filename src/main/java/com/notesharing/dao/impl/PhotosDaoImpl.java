@@ -78,4 +78,16 @@ public class PhotosDaoImpl implements PhotosDao {
 		return photosList;
 	}
 
+	@Override
+	public int deletePhotos(Integer photosid) {
+		Photos photos = new Photos();
+		photos.setPhotosid(photosid);
+		try {
+			sessionFactory.getCurrentSession().delete(photos);
+			return 1;
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
 }

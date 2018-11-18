@@ -41,6 +41,11 @@ public interface UserServiceI {
 	List<Photos> getPhotos(String tagName);
 
 	/**
+	 * 删除图集
+	 */
+	int deletePhotos(Integer photosid);
+
+	/**
 	 * 保存用户
 	 * 
 	 * @param user

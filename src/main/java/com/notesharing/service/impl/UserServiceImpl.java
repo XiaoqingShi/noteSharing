@@ -175,4 +175,10 @@ public class UserServiceImpl implements UserServiceI {
 		return pList;
 	}
 
+	@Override
+	public int deletePhotos(Integer photosid) {
+		// TODO Auto-generated method stub
+		return photosDao.deletePhotos(photosid);
+	}
+
 }
