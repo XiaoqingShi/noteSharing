@@ -45,7 +45,7 @@ public class PhotosCommentDaoImpl implements PhotosCommentDao {
 
 	@Override
 	public int deletePhotosComment(Integer photosid) {
-		String hql = "delete PhotosComment where photoid=?";
+		String hql = "delete PhotosComment where photosid=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter(0, photosid);
 		query.executeUpdate();
