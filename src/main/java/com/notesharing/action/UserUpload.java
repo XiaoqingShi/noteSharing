@@ -37,7 +37,7 @@ public class UserUpload extends SuperAction {
 		dataMap = new HashMap<String, Object>();
 		dataMap.clear();
 		ServletActionContext.getRequest().setCharacterEncoding("UTF-8");
-		String realpath = ServletActionContext.getServletContext().getRealPath("/images");
+		String realpath = ServletActionContext.getServletContext().getRealPath("/user/images/");
 		System.out.println(realpath);
 		if (image != null) {
 			File savedir = new File(realpath);
@@ -45,11 +45,10 @@ public class UserUpload extends SuperAction {
 				savedir.getParentFile().mkdirs();
 			Date date = new Date();
 			String time = String.valueOf(date.getTime());// 按时间存图片
-			int a = 0;
 			String[] aStrings = imageFileName.split("\\.");
 			// System.out.println(new Date().toString());
-			File savefile = new File(savedir, time + "_" + aStrings[aStrings.length - 1]);
-			String saveName = time + "_" + aStrings[aStrings.length - 1];
+			File savefile = new File(savedir, time + "." + aStrings[aStrings.length - 1]);
+			String saveName = time + "." + aStrings[aStrings.length - 1];
 			FileUtils.copyFile(image, savefile);
 			String path = "/user/images/" + saveName;
 			System.out.println(path);
