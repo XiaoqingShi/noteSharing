@@ -45,14 +45,11 @@ public class PhotosCommentDaoImpl implements PhotosCommentDao {
 
 	@Override
 	public int deletePhotosComment(Integer photosid) {
-		PhotosComment photo = new PhotosComment();
-		photo.setPhotosid(photosid);
-		try {
-			sessionFactory.getCurrentSession().delete(photo);
-			return 1;
-		} catch (Exception e) {
-			throw e;
-		}
+		String hql = "delete PhotosComment where photoid=?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter(0, photosid);
+		query.executeUpdate();
+		return 1;
 	}
 
 }

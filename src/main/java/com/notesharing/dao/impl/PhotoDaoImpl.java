@@ -2,6 +2,7 @@ package com.notesharing.dao.impl;
 
 import java.io.Serializable;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -30,14 +31,11 @@ public class PhotoDaoImpl implements PhotoDao {
 
 	@Override
 	public int deletePhoto(Integer photosid) {
-		Photo photo = new Photo();
-		photo.setPhotosid(photosid);
-		try {
-			sessionFactory.getCurrentSession().delete(photo);
-			return 1;
-		} catch (Exception e) {
-			throw e;
-		}
+		String hql = "delete Photo where photoid=?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter(0, photosid);
+		query.executeUpdate();
+		return 1;
 	}
 
 }
